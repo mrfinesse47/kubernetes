@@ -13,4 +13,13 @@ kubectl replace -f replicase-definition.yaml // in which you define 6
 // or by command line
 
 kubectl scale -replicas=6 -f replicase-definition.yaml
-![Replica Set](./replica-set-example.jpg 'a title')
+
+![Replica Set](./replica-set-example.jpg 'Replica Set Example')
+
+Useful commands
+
+![Replica Set](./useful-commands.jpg 'Useful Commands')
+
+// to edit a replicaset by command line
+
+kubectl edit replicaset myapp-replicaset

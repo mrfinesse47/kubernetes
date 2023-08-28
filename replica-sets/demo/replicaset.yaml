@@ -1,0 +1,28 @@
+# to create: kubectl create -f replicaset.yaml
+# to check status: kubectl get replicaset
+# now if we try to delete one of these pods:
+# kubectl delete pod myapp-replicaset-[randomvalue]
+# if we get pods again we still have 3 pods running lol neat
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp
+spec:
+  selector:
+    matchLabels:
+      env: production
+  replicas: 3
+  template:
+    metadata:
+      name: nginx-2
+      labels:
+        env: production
+        # the labels set on the pod and the selector is what ties the replica
+        # set to the pod
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
