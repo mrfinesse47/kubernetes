@@ -23,3 +23,11 @@ Useful commands
 // to edit a replicaset by command line
 
 kubectl edit replicaset myapp-replicaset
+
+// or to scale by command
+
+kubectl scale replicaset myapp-replicaset --replicas=2
+
+// if you need to look into a pod description
+
+kubectl describe pod [podname]
