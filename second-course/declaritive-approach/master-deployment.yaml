@@ -1,3 +1,21 @@
+apiVersion: v1
+kind: Service
+# its a good practice to add service first
+metadata:
+  name: backend
+spec:
+  selector:
+    app: second-app
+  ports:
+    - protocol: 'TCP'
+      port: 80
+      targetPort: 8080
+      # - protocol: 'TCP'
+      #   port: 443
+      #   targetPort: 443
+  type: LoadBalancer
+# you must seperate by 3 dashes it means new object in yaml
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
