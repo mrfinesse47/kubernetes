@@ -36,3 +36,11 @@ spec:
       containers:
         - name: second-node
           image: mrfinesse47/kub-first-app:rex
+          livenessProbe:
+            # a way for k8s to verify the container is running
+            # is useful if the app doesnt react to the default k8s restart feature
+            httpGet:
+              path: /
+              port: 8080
+            periodSeconds: 10
+            initialDelaySeconds: 5

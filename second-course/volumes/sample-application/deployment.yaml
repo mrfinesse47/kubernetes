@@ -27,4 +27,4 @@ spec:
     spec:
       containers:
         - name: story
-          image: mrfinesse47/kub-data-demo
+          image: mrfinesse47/kub-data-demo:latest
