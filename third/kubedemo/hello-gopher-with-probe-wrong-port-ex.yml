@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hellogopher
+spec:
+  selector:
+    matchLabels:
+      app: hellogopher
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hellogopher
+    spec:
+      containers:
+        - name: hellogopher
+          image: mrfinesse47/hellogopher:1.0
+
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+            httpGet:
+              path: /
+              port: 9999

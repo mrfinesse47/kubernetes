@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hellogopher
+spec: #what state we desire for this object
+  selector:
+    matchLabels:
+      app: hellogopher
+  replicas: 1
+  template: # when k8s creates new pods it follows this
+    metadata:
+      labels:
+        app: hellogopher
+    spec:
+      containers:
+        - name: hellogopher
+          image: mrfinesse47/hellogopher:1.0 # try not to use latest it can mess up easily
+          # latest will also make k8s check docker hub, but we want to use our minikube image
+          imagePullPolicy: IfNotPresent # check docker hub if not present
+          ports:
+            - containerPort: 8080
