@@ -1,0 +1,6 @@
+# the 00 and 01 is the order in which k8s applies the objects
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hellogopher

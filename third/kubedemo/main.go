@@ -10,10 +10,15 @@ import (
 func main(){
 	started := time.Now()
 
+	if err := connectDatabase(); err != nil {
+		log.Fatal(err)
+	}
+	defer databaseConn.Close()
+
 	http.HandleFunc("/",func(w http.ResponseWriter, r *http.Request){
 		duration := time.Now().Sub(started)
 
-		if duration.Seconds() > 10 {
+		if duration.Seconds() > 1000 {
 			log.Println("timeout triggered")
 			w.WriteHeader(http.StatusInternalServerError)
 			w.Write([]byte(`i am timed out`))

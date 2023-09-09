@@ -1,7 +1,13 @@
+# to expose this server on a node port
+# kubectl expose deployment hellogopher --name=hellogopher --port=8080 --target-port=8080 --type=NodePort
+# then since you are in a name space with minikube use -n flag
+#  minikube service hellogopher -n hellogopher
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hellogopher
+  namespace: hellogopher
 spec:
   selector:
     matchLabels:
@@ -14,11 +20,18 @@ spec:
     spec:
       containers:
         - name: hellogopher
-          image: mrfinesse47/hellogopher:2.0
+          image: mrfinesse47/hellogopher:5.0
 
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
+          env:
+            - name: DATABASE_PASSWORD
+              value: password
+            - name: DATABASE_USERNAME
+              value: root
+            - name: DATABASE_NAME
+              value: test
           livenessProbe:
             initialDelaySeconds: 5
             timeoutSeconds: 1
