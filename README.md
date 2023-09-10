@@ -1,7 +1,3 @@
-# kubernetes
+[youtube](https://www.youtube.com/watch?v=JoHUi9KvnOA&ab_channel=Abhishek.Veeramalla)
 
-useful vs code settings for kubernetes - in settings.json
-
-"yaml.schemas": {
-"kubernetes": "\*.yaml"
-}
+images made at https://excalidraw.com/
