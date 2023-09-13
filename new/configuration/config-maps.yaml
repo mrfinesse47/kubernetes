@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  APP_COLOR: blue
+  APP_MODE: prod
+# run
+# kubectl create -f config-maps.yaml
+# to get config maps
+# kubectl get configmaps
+
+---
+# to inject a env map into a pod
+
+spec:
+  containers:
+    - name: simple-webapp-color
+      image: app
+      envFrom:
+        - configMapRef:
+            name: app-config # from the config map name

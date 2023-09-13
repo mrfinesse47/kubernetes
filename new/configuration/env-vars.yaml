@@ -1,0 +1,6 @@
+### Environment Variables
+
+spec:
+  env:
+    - name: APP_COLOR
+      value: pink
