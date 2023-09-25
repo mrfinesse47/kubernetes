@@ -1,0 +1,15 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: example-cronjob
+spec:
+  schedule: '*/1 * * * *' # Cron schedule in standard format (runs every minute)
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: example-pod
+              image: busybox # Replace with your desired container image
+              command: ['date']
+          restartPolicy: OnFailure
